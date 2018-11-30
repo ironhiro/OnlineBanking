@@ -1,4 +1,4 @@
-
+package Model;
 import java.util.*;
 
 public class MinusAccount extends Account {
@@ -10,12 +10,12 @@ public class MinusAccount extends Account {
 
     public char getCreditRate() {
         // TODO implement here
-        return "0";
+        return 'a';
     }
 
-    public void setCreditRate(credit_rate char) {
+    public void setCreditRate(char credit_rate) {
         // TODO implement here
-        return null;
+        
     }
 
 }

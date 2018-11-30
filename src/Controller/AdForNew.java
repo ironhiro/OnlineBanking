@@ -1,4 +1,4 @@
-
+package Controller;
 import java.util.*;
 
 public class AdForNew implements Controller {
@@ -8,7 +8,7 @@ public class AdForNew implements Controller {
 
     public void execute() {
         // TODO implement here
-        return null;
+       
     }
 
 }

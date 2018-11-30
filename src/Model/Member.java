@@ -1,4 +1,4 @@
-
+package Model;
 import java.util.*;
 
 public abstract class Member {
@@ -59,7 +59,7 @@ public abstract class Member {
 
     public void showAccountList() {
         // TODO implement here
-        return null;
+        
     }
 
 }

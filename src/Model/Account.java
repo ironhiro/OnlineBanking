@@ -1,4 +1,4 @@
-
+package Model;
 import java.util.*;
 
 public abstract class Account {
@@ -29,7 +29,7 @@ public abstract class Account {
 
     public void setBalance(int amount) {
         // TODO implement here
-        return null;
+       
     }
 
 }
