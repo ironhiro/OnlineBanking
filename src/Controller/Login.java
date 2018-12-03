@@ -1,5 +1,6 @@
 package Controller;
 import View.LoginView;
+import java.sql.*;
 
 public class Login implements Controller {
 
@@ -16,12 +17,15 @@ public class Login implements Controller {
 		String id = view.getTextField().getText();
 		String password = view.getPasswordField().getPassword().toString();
 		
-		
+		Connection conn = null;
 	}
 	
 	boolean isSuccess()
 	{
-		return false;
+		if(isAuthenticated)
+			return true;
+		else
+			return false;
 	}
 
 }
