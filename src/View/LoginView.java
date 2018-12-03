@@ -60,8 +60,6 @@ public class LoginView extends JFrame {
 				c.execute();
 				if(c.isSuccess())
 				{
-					String id = textField.getText();
-					
 					MainView mainFrame = new MainView();
 					mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 					mainFrame.setVisible(true);

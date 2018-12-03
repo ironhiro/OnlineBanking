@@ -39,6 +39,7 @@ public class Login implements Controller {
 			}
 			
 			
+			
 			if(inputpassword.equals(userpassword))
 				isAuthenticated = true;
 			
