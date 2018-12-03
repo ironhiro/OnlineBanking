@@ -79,4 +79,14 @@ public class LoginView extends JFrame {
 		button_1.setBounds(234, 158, 116, 36);
 		contentPane.add(button_1);
 	}
+	
+	public JTextField getTextField()
+	{
+		return textField;
+	}
+	
+	public JPasswordField getPasswordField()
+	{
+		return passwordField;
+	}
 }
