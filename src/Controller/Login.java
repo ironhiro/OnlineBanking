@@ -11,16 +11,44 @@ public class Login implements Controller {
 	{
 		this.view = view;
 	}
+	
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		String id = view.getTextField().getText();
-		String password = view.getPasswordField().getPassword().toString();
+		String inputid = view.getTextField().getText();
+		char[] pass=view.getPasswordField().getPassword();
+		String inputpassword = new String(pass);
+		
+		String userid= "";
+		String userpassword = "";
 		
 		Connection conn = null;
+		Statement st = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/bank?serverTimezone=UTC&useSSL=false", "root","");
+			st = conn.createStatement();
+			
+			String sql = "select * FROM member WHERE member_id=" + inputid;
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next())
+			{
+				userid = rs.getString(1);
+				userpassword = rs.getString(2);
+			}
+			
+			
+			if(inputpassword.equals(userpassword))
+				isAuthenticated = true;
+			
+		} catch(Exception ex){
+			
+			ex.printStackTrace();
+		}
 	}
 	
-	boolean isSuccess()
+	public boolean isSuccess()
 	{
 		if(isAuthenticated)
 			return true;
