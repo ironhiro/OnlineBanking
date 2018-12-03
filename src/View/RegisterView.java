@@ -1,4 +1,5 @@
 package View;
+import Controller.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -11,39 +12,31 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.awt.event.ActionEvent;
 
 public class RegisterView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JPasswordField passwordField;
+	private JTextField id;
+	private JTextField name;
+	private JPasswordField password;
 	private JTextField textField_2;
 	private JTextField textField_3;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegisterView frame = new RegisterView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public RegisterView() {
 		setTitle("\uD68C\uC6D0\uAC00\uC785");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 400, 500);
+		Controller c = new Register(this);
+		
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -73,35 +66,44 @@ public class RegisterView extends JFrame {
 		label_4.setBounds(51, 301, 57, 15);
 		contentPane.add(label_4);
 		
-		textField = new JTextField();
-		textField.setBounds(160, 70, 162, 21);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		id = new JTextField();
+		id.setBounds(160, 70, 162, 21);
+		contentPane.add(id);
+		id.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(160, 120, 162, 21);
-		contentPane.add(textField_1);
+		name = new JTextField();
+		name.setColumns(10);
+		name.setBounds(160, 120, 162, 21);
+		contentPane.add(name);
 		
 		JLabel label_5 = new JLabel("\uC8FC\uC18C");
 		label_5.setBounds(51, 340, 78, 15);
 		contentPane.add(label_5);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(160, 173, 162, 18);
-		contentPane.add(passwordField);
+		password = new JPasswordField();
+		password.setBounds(160, 173, 162, 18);
+		contentPane.add(password);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(160, 216, 41, 21);
-		contentPane.add(comboBox);
+		JComboBox year = new JComboBox();
+		year.setBounds(160, 216, 57, 21);
+		for(int i=1900;i<=Calendar.YEAR; i++)
+		{
+			year.addItem(i);
+		}
+		contentPane.add(year);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(213, 216, 41, 21);
-		contentPane.add(comboBox_1);
+		JComboBox month = new JComboBox();
+		month.setBounds(229, 216, 44, 21);
+		for(int i=1;i<=12;i++)
+		{
+			month.addItem(i);
+		}
+		contentPane.add(month);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(266, 216, 45, 21);
-		contentPane.add(comboBox_2);
+		JComboBox day = new JComboBox();
+		day.setBounds(285, 216, 37, 21);
+		
+		contentPane.add(day);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
@@ -122,6 +124,11 @@ public class RegisterView extends JFrame {
 		contentPane.add(textField_3);
 		
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnNewButton.setBounds(51, 410, 97, 23);
 		contentPane.add(btnNewButton);
 		

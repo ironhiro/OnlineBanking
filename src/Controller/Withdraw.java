@@ -11,4 +11,10 @@ public class Withdraw implements Controller {
         
     }
 
+	@Override
+	public boolean isSuccess() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
