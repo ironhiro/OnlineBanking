@@ -1,11 +1,12 @@
 package View;
-import java.awt.BorderLayout;
+import Controller.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -21,25 +22,15 @@ public class LoginView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginView frame = new LoginView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public LoginView() {
+		Controller c = new Login(this);
 		setTitle("Login");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 446, 284);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,9 +57,20 @@ public class LoginView extends JFrame {
 		JButton button = new JButton("\uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MainView mainFrame = new MainView();
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				c.execute();
+				if(c.isSuccess())
+				{
+					String id = textField.getText();
+					
+					MainView mainFrame = new MainView();
+					mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					mainFrame.setVisible(true);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호가 맞지 않습니다.");
+				}
+				
 				
 			}
 		});
