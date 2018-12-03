@@ -28,6 +28,7 @@ public class InitView extends JFrame {
 			public void run() {
 				try {
 					InitView frame = new InitView();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +42,7 @@ public class InitView extends JFrame {
 	 */
 	public InitView() {
 		setTitle("WHBank");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 310);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,7 +52,9 @@ public class InitView extends JFrame {
 		JButton btnRegister = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				RegisterView register = new RegisterView();
+				register.setLocationRelativeTo(null);
 				register.setVisible(true);
 			}
 		});
@@ -62,12 +65,9 @@ public class InitView extends JFrame {
 		JButton btnLogin = new JButton("\uB85C\uADF8\uC778");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				LoginView login = new LoginView();
-				login.addWindowListener(new WindowAdapter()
-				{
-					
-				}
-				);
+				login.setLocationRelativeTo(null);
 				login.setVisible(true);
 				
 				
@@ -94,7 +94,9 @@ public class InitView extends JFrame {
 		JButton button = new JButton("\uAD00\uB9AC\uC790 \uBAA8\uB4DC \uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setEnabled(false);
 				ManagerModeLoginView register = new ManagerModeLoginView();
+				register.setLocationRelativeTo(null);
 				register.setVisible(true);
 			}
 		});
