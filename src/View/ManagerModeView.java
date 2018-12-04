@@ -22,7 +22,7 @@ public class ManagerModeView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	protected String newAccountName;
+	protected static String newAccountName;
 
 	
 
