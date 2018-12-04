@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.DefaultComboBoxModel;
@@ -20,6 +21,8 @@ import java.awt.event.ActionEvent;
 
 public class AccountRegistrationView extends JFrame {
 
+	private String newAccountNum; //자동으로 생성되는 계좌 번호
+	
 	private JPanel contentPane;
 	private JLabel label;
 	private JLabel lblNewLabel_1;
@@ -28,6 +31,7 @@ public class AccountRegistrationView extends JFrame {
 	private JComboBox comboBox_1;
 	private JLabel lblNewLabel_3;
 	private JTextField textField;
+
 
 	
 
@@ -56,9 +60,12 @@ public class AccountRegistrationView extends JFrame {
 		comboBox.setBounds(158, 73, 244, 27);
 		contentPane.add(comboBox);
 		
-		lblNewLabel_1 = new JLabel("1011-15234-08");
+		newAccountNum = makeAccountNum();
+		
+		lblNewLabel_1 = new JLabel(newAccountNum);
 		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(158, 31, 244, 25);
+		lblNewLabel_1.setText(newAccountNum);
 		contentPane.add(lblNewLabel_1);
 		
 		panel = new JPanel();
@@ -98,7 +105,18 @@ public class AccountRegistrationView extends JFrame {
 		contentPane.add(btnNewButton_1);
 	}
 
+	String makeAccountNum() {
+		String newAccountNum = "1011";
+		int value;
+		Random r = new Random();
+		for(int i = 0; i < 7; i++)
+		{
+			value = r.nextInt(10);
+			newAccountNum += Integer.toString(value);
+		}
+		return newAccountNum;
+	}
 	
-
+	String getNewAccountNum() {return newAccountNum;}
 	
 }

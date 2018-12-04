@@ -22,7 +22,7 @@ public class ManagerModeView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	protected static String newAccountName;
+	protected static String newAccountName = "";
 
 	
 
@@ -89,4 +89,5 @@ public class ManagerModeView extends JFrame {
 		lblNewLabel.setFont(new Font("±¼¸²", Font.PLAIN, 20));
 	}
 
+	public String getNewAccountName() {return newAccountName;}
 }

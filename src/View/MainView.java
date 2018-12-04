@@ -1,5 +1,6 @@
 package View;
 
+import Model.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -37,10 +38,7 @@ public class MainView extends JFrame implements Observer{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		NewItemPopupView mainFrame = new NewItemPopupView();
-		mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		mainFrame.setVisible(true);
+	
 		
 		JButton btnNewButton = new JButton("\uB9C8\uC774\uD398\uC774\uC9C0");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -53,7 +51,7 @@ public class MainView extends JFrame implements Observer{
 		btnNewButton.setBounds(288, 15, 123, 27);
 		contentPane.add(btnNewButton);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBox = new JComboBox(); //계설된 계좌 현황
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uC790\uC720\uC785\uCD9C\uAE08\uACC4\uC88C_1011-15234-07"}));
 		comboBox.setBounds(59, 168, 312, 27);
 		contentPane.add(comboBox);
@@ -128,7 +126,7 @@ public class MainView extends JFrame implements Observer{
 		
 		JButton btnNewButton_5 = new JButton("\uACC4\uC88C \uB4F1\uB85D");
 		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) { //계좌 등록
 				AccountRegistrationView mainFrame = new AccountRegistrationView();
 				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				mainFrame.setVisible(true);
@@ -138,31 +136,30 @@ public class MainView extends JFrame implements Observer{
 		panel_1.add(btnNewButton_5);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TransactionHistoryView mainFrame = new TransactionHistoryView();
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				TransactionHistoryView transactionHistoryView = new TransactionHistoryView();
+				transactionHistoryView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				transactionHistoryView.setVisible(true);
 			}
 		});
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AccountTransferView mainFrame = new AccountTransferView();
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				AccountTransferView accountTransferView = new AccountTransferView();
+				accountTransferView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				accountTransferView.setVisible(true);
 			}
 		});
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WithdrawView mainFrame = new WithdrawView();
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				WithdrawView withdrawView = new WithdrawView();
+				withdrawView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				withdrawView.setVisible(true);
 			}
 		});
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				DepositView mainFrame = new DepositView();
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				DepositView depoistView = new DepositView();
+				depoistView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				depoistView.setVisible(true);
 				
 			}
 		});
@@ -171,8 +168,13 @@ public class MainView extends JFrame implements Observer{
 
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void update(Observable obs, Object arg) {
 		// TODO Auto-generated method stub
-		
+		ManagerModeView mv = new ManagerModeView();
+		String s = mv.getNewAccountName();
+		NewItemPopupView adNewAccount = new NewItemPopupView(s);
+		adNewAccount.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		adNewAccount.setVisible(true);
+
 	}
 }
