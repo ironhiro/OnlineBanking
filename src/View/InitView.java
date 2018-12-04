@@ -94,6 +94,7 @@ public class InitView extends JFrame {
 		JButton button = new JButton("\uAD00\uB9AC\uC790 \uBAA8\uB4DC \uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				setEnabled(false);
 				ManagerModeLoginView register = new ManagerModeLoginView();
 				register.setLocationRelativeTo(null);
