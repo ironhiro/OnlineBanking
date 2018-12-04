@@ -17,10 +17,14 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
+import java.util.*;
+import java.sql.Date;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.ItemListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.event.ItemEvent;
 
 public class RegisterView extends JFrame {
@@ -32,6 +36,8 @@ public class RegisterView extends JFrame {
 	private JTextField phoneNo;
 	private JTextField address;
 	private int selectedMonth = 1;
+	private int selectedYear = 1900;
+	private int selectedDate;
 	private int dayNum;
 	private boolean gender;
 
@@ -178,9 +184,14 @@ public class RegisterView extends JFrame {
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				selectedYear = (int) year.getSelectedItem();
+				selectedMonth = (int) month.getSelectedItem();
+				selectedDate = (int) day.getSelectedItem();
+				
 				c.execute();
 				if (c.isSuccess()) {
 					JOptionPane.showMessageDialog(null, "회원 등록이 완료 되었습니다!");
+					RegisterView.this.dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "회원 등록이 실패하였습니다.");
 				}
@@ -203,4 +214,35 @@ public class RegisterView extends JFrame {
 		String s = new String(password.getPassword());
 		return s;
 	}
+	
+	public String getMemberName()
+	{
+		return name.getText();
+	}
+	
+	public Date getBirthday() throws ParseException
+	{
+		String s = selectedYear + "/" + selectedMonth + "/" + selectedDate;
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd");
+		java.util.Date date = sdf1.parse(s);
+		Date birthday = new Date(date.getTime());
+		return birthday;
+	}
+	
+	public String getPhoneNo()
+	{
+		return phoneNo.getText();
+	}
+	
+	public boolean getGender()
+	{
+		return gender;
+	}
+	
+	public String getAddress()
+	{
+		return address.getText();
+	}
+	
+	
 }
