@@ -5,7 +5,7 @@ import java.util.*;
 public class Register implements Controller {
 
 	RegisterView register;
-	
+		
     public Register(RegisterView register) {
     	this.register = register;
     }
@@ -18,7 +18,7 @@ public class Register implements Controller {
 	@Override
 	public boolean isSuccess() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

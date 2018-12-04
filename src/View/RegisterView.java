@@ -22,8 +22,8 @@ public class RegisterView extends JFrame {
 	private JTextField id;
 	private JTextField name;
 	private JPasswordField password;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField phoneNo;
+	private JTextField address;
 
 	
 
@@ -105,28 +105,28 @@ public class RegisterView extends JFrame {
 		
 		contentPane.add(day);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(160, 258, 162, 21);
-		contentPane.add(textField_2);
+		phoneNo = new JTextField();
+		phoneNo.setColumns(10);
+		phoneNo.setBounds(160, 258, 162, 21);
+		contentPane.add(phoneNo);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("\uB0A8");
-		rdbtnNewRadioButton.setBounds(160, 297, 62, 23);
-		contentPane.add(rdbtnNewRadioButton);
+		JRadioButton male = new JRadioButton("\uB0A8");
+		male.setBounds(160, 297, 62, 23);
+		contentPane.add(male);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("\uB140");
-		rdbtnNewRadioButton_1.setBounds(236, 297, 121, 23);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JRadioButton female = new JRadioButton("\uB140");
+		female.setBounds(236, 297, 121, 23);
+		contentPane.add(female);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(160, 337, 162, 21);
-		contentPane.add(textField_3);
+		address = new JTextField();
+		address.setColumns(10);
+		address.setBounds(160, 337, 162, 21);
+		contentPane.add(address);
 		
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				c.execute();
 			}
 		});
 		btnNewButton.setBounds(51, 410, 97, 23);
@@ -136,4 +136,16 @@ public class RegisterView extends JFrame {
 		button.setBounds(225, 410, 97, 23);
 		contentPane.add(button);
 	}
+	
+	public String getIDField()
+	{
+		return id.getText();
+	}
+	
+	public String getPassField()
+	{
+		String s = new String(password.getPassword());
+		return s;
+	}
+	 
 }
