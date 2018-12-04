@@ -1,5 +1,5 @@
 package Controller;
-import View.LoginView;
+import View.*;
 import Model.*;
 import java.sql.*;
 
@@ -35,7 +35,7 @@ public class Login implements Controller {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/bank?serverTimezone=UTC&useSSL=false", "root","");
 			st = conn.createStatement();
 			
-			String sql = "select * FROM member WHERE member_id=" + inputid;
+			String sql = "select * FROM member WHERE member_id='" + inputid + "'";
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next())
 			{
@@ -54,7 +54,6 @@ public class Login implements Controller {
 			{
 				
 				isAuthenticated = true;
-				
 				Member member = new Normal(userid,userpassword,userName,userPhoneNo,userAddr,userGender,userBirth);
 				
 			}

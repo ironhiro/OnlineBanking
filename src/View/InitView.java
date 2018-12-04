@@ -95,7 +95,6 @@ public class InitView extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setEnabled(false);
 				ManagerModeLoginView register = new ManagerModeLoginView();
 				register.setLocationRelativeTo(null);
 				register.setVisible(true);

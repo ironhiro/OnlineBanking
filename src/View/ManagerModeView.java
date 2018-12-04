@@ -30,7 +30,7 @@ public class ManagerModeView extends JFrame {
 	 * Create the frame.
 	 */
 	public ManagerModeView() {
-		Controller c = new AdForNew();
+		Controller c = new AdForNew(this);
 
 		setTitle("\uAD00\uB9AC\uC790\uBAA8\uB4DC");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -1,9 +1,12 @@
 package Controller;
 import java.util.*;
+import View.*;
 
 public class AdForNew implements Controller {
 
-    public AdForNew() {
+	ManagerModeView manager;
+    public AdForNew(ManagerModeView manager) {
+    	this.manager = manager;
     }
 
     public void execute() {

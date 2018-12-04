@@ -63,7 +63,6 @@ public class LoginView extends JFrame {
 				{
 					JOptionPane.showMessageDialog(null, "로그인 성공했습니다.");
 					LoginView.this.dispose();
-					
 					MainView mainFrame = new MainView();
 					mainFrame.setLocationRelativeTo(null);
 					mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

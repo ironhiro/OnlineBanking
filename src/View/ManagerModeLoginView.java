@@ -86,4 +86,14 @@ public class ManagerModeLoginView extends JFrame {
 		button_1.setBounds(252, 128, 116, 36);
 		contentPane.add(button_1);
 	}
+	
+	public String getId()
+	{
+		return textField.getText();
+	}
+	
+	public char[] getPass()
+	{
+		return passwordField.getPassword();
+	}
 }
