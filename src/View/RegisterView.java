@@ -1,5 +1,6 @@
 package View;
 import Controller.*;
+import Model.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -7,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
@@ -31,6 +33,7 @@ public class RegisterView extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisterView() {
+		
 		setTitle("\uD68C\uC6D0\uAC00\uC785");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 400, 500);
@@ -127,6 +130,15 @@ public class RegisterView extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				c.execute();
+				if(c.isSuccess())
+				{
+					JOptionPane.showMessageDialog(null,"회원 등록이 완료 되었습니다!");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"회원 등록이 실패하였습니다.");
+				}
+				
 			}
 		});
 		btnNewButton.setBounds(51, 410, 97, 23);
