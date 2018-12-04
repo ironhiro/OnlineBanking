@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -18,7 +20,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
-public class MainView extends JFrame {
+public class MainView extends JFrame implements Observer{
 
 	private JPanel contentPane;
 
@@ -164,5 +166,13 @@ public class MainView extends JFrame {
 				
 			}
 		});
+	}
+
+
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }
