@@ -59,7 +59,7 @@ public class RegisterView extends JFrame {
 		contentPane.add(label);
 
 		JLabel label_1 = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		label_1.setBounds(51, 176, 57, 15);
+		label_1.setBounds(51, 176, 92, 15);
 		contentPane.add(label_1);
 
 		JLabel label_2 = new JLabel("\uC0DD\uB144\uC6D4\uC77C");
@@ -67,7 +67,7 @@ public class RegisterView extends JFrame {
 		contentPane.add(label_2);
 
 		JLabel label_3 = new JLabel("\uC804\uD654\uBC88\uD638");
-		label_3.setBounds(51, 261, 57, 15);
+		label_3.setBounds(51, 261, 97, 15);
 		contentPane.add(label_3);
 
 		JLabel label_4 = new JLabel("\uC131\uBCC4");
@@ -150,22 +150,22 @@ public class RegisterView extends JFrame {
 
 		JRadioButton male = new JRadioButton("\uB0A8");
 		male.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) { //남자 라디오 버튼
+			public void itemStateChanged(ItemEvent e) { // 남자 라디오 버튼
 				gender = false;
 			}
 		});
 		male.setBounds(160, 297, 62, 23);
 		contentPane.add(male);
 
-		JRadioButton female = new JRadioButton("\uB140");
+		JRadioButton female = new JRadioButton("\uC5EC");
 		female.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) { //여자 라디오 버튼
+			public void itemStateChanged(ItemEvent e) { // 여자 라디오 버튼
 				gender = true;
 			}
 		});
 		female.setBounds(236, 297, 121, 23);
 		contentPane.add(female);
-		
+
 		ButtonGroup genderType = new ButtonGroup();
 		genderType.add(male);
 		genderType.add(female);
