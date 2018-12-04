@@ -22,6 +22,7 @@ public class ManagerModeView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	protected String newAccountName;
 
 	
 
@@ -55,6 +56,7 @@ public class ManagerModeView extends JFrame {
 				c.execute();
 				if(c.isSuccess())
 				{
+					newAccountName = textField.getText();
 					JOptionPane.showMessageDialog(null,"새 상품을 성공적으로 등록하였습니다!");
 				}
 				else
