@@ -1,5 +1,6 @@
 package View;
 import Controller.*;
+import Model.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -60,7 +61,11 @@ public class LoginView extends JFrame {
 				c.execute();
 				if(c.isSuccess())
 				{
+					JOptionPane.showMessageDialog(null, "로그인 성공했습니다.");
+					LoginView.this.dispose();
+					
 					MainView mainFrame = new MainView();
+					mainFrame.setLocationRelativeTo(null);
 					mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 					mainFrame.setVisible(true);
 				}

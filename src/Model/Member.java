@@ -1,9 +1,10 @@
 package Model;
 import java.util.*;
 
-public abstract class Member {
+public abstract class Member extends Observable{
 
-    public Member() {
+    public Member(String id, String password, String name, String phoneNo, String address, Boolean gender, Date birth) {
+    	
     }
 
     private String id;

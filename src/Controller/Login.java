@@ -1,5 +1,6 @@
 package Controller;
 import View.LoginView;
+import Model.*;
 import java.sql.*;
 
 public class Login implements Controller {
@@ -21,6 +22,10 @@ public class Login implements Controller {
 		
 		String userid= "";
 		String userpassword = "";
+		String userName= "", userAddr = "", userPhoneNo = "";
+		
+		Boolean userGender = false;
+		Date userBirth = null;
 		
 		Connection conn = null;
 		Statement st = null;
@@ -36,12 +41,28 @@ public class Login implements Controller {
 			{
 				userid = rs.getString(1);
 				userpassword = rs.getString(2);
+				userName = rs.getString(3);
+				userAddr = rs.getString(4);
+				userPhoneNo = rs.getString(5);
+				userGender = rs.getBoolean(6);
+				userBirth = rs.getDate(7);
 			}
 			
 			
 			
 			if(inputpassword.equals(userpassword))
+			{
+				
 				isAuthenticated = true;
+				
+				Member member = new Normal(userid,userpassword,userName,userPhoneNo,userAddr,userGender,userBirth);
+				
+			}
+			else
+			{
+				isAuthenticated = false;
+			}
+				
 			
 		} catch(Exception ex){
 			

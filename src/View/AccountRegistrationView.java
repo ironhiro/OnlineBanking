@@ -9,9 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.Font;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AccountRegistrationView extends JFrame {
 
@@ -81,6 +86,10 @@ public class AccountRegistrationView extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton.setBounds(84, 295, 125, 56);
 		contentPane.add(btnNewButton);
 		
@@ -88,4 +97,8 @@ public class AccountRegistrationView extends JFrame {
 		btnNewButton_1.setBounds(247, 295, 125, 56);
 		contentPane.add(btnNewButton_1);
 	}
+
+	
+
+	
 }
