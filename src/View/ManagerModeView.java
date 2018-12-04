@@ -1,4 +1,6 @@
 package View;
+import Controller.*;
+import Model.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -6,11 +8,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ManagerModeView extends JFrame {
 
@@ -23,6 +29,8 @@ public class ManagerModeView extends JFrame {
 	 * Create the frame.
 	 */
 	public ManagerModeView() {
+		Controller c = new AdForNew();
+
 		setTitle("\uAD00\uB9AC\uC790\uBAA8\uB4DC");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 434, 261);
@@ -42,10 +50,28 @@ public class ManagerModeView extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.execute();
+				if(c.isSuccess())
+				{
+					JOptionPane.showMessageDialog(null,"새 상품을 성공적으로 등록하였습니다!");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"새 상품이 등록되지 못 하였습니다.");
+				}
+			}
+		});
 		btnNewButton.setBounds(83, 131, 125, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uCDE8\uC18C");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(235, 131, 125, 29);
 		contentPane.add(btnNewButton_1);
 		
