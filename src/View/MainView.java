@@ -46,7 +46,7 @@ public class MainView extends JFrame implements Observer{
 		JButton btnNewButton = new JButton("\uB9C8\uC774\uD398\uC774\uC9C0");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MyPageView mainFrame = new MyPageView();
+				MyPageView mainFrame = new MyPageView(observable);
 				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				mainFrame.setVisible(true);
 			}

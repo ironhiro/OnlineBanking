@@ -11,9 +11,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.ActionEvent;
 
-public class MyPageView extends JFrame {
+public class MyPageView extends JFrame implements Observer{
 
 	private JPanel contentPane;
 	private JTextField nameInfo;
@@ -21,13 +23,15 @@ public class MyPageView extends JFrame {
 	private JPasswordField passInfo;
 	private JPasswordField phoneInfo;
 	private JButton changePassButton;
-
+	private Observable observable;
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public MyPageView() {
+	public MyPageView(Observable observable) {
+		this.observable = observable;
+		observable.addObserver(this);
 		setTitle("\uB9C8\uC774\uD398\uC774\uC9C0");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 497, 340);
@@ -89,5 +93,12 @@ public class MyPageView extends JFrame {
 		});
 		cancelButton.setBounds(290, 225, 125, 44);
 		contentPane.add(cancelButton);
+	}
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }
