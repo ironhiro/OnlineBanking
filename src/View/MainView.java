@@ -24,13 +24,16 @@ import java.awt.Color;
 public class MainView extends JFrame implements Observer{
 
 	private JPanel contentPane;
-
+	Observable observable;
+	JLabel username;
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public MainView() {
+	public MainView(Observable observable) {
+		this.observable = observable;
+		observable.addObserver(this);
 		setTitle("WH Bank");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 566);
@@ -51,8 +54,7 @@ public class MainView extends JFrame implements Observer{
 		btnNewButton.setBounds(288, 15, 123, 27);
 		contentPane.add(btnNewButton);
 		
-		JComboBox comboBox = new JComboBox(); //°è¼³µÈ °èÁÂ ÇöÈ²
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uC790\uC720\uC785\uCD9C\uAE08\uACC4\uC88C_1011-15234-07"}));
+		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(59, 168, 312, 27);
 		contentPane.add(comboBox);
 		
@@ -66,10 +68,10 @@ public class MainView extends JFrame implements Observer{
 		lblNewLabel_1.setBounds(198, 87, 132, 27);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("\uC870\uC6A9\uD604");
-		lblNewLabel_2.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblNewLabel_2.setBounds(111, 89, 78, 27);
-		contentPane.add(lblNewLabel_2);
+		username = new JLabel("");
+		username.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		username.setBounds(111, 89, 78, 27);
+		contentPane.add(username);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -77,21 +79,21 @@ public class MainView extends JFrame implements Observer{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("\uC790\uC720\uC785\uCD9C\uAE08\uACC4\uC88C");
-		lblNewLabel_3.setForeground(Color.RED);
-		lblNewLabel_3.setFont(new Font("±¼¸²", Font.PLAIN, 22));
-		lblNewLabel_3.setBounds(17, 15, 215, 21);
-		panel.add(lblNewLabel_3);
+		JLabel account_type = new JLabel("");
+		account_type.setForeground(Color.RED);
+		account_type.setFont(new Font("±¼¸²", Font.PLAIN, 22));
+		account_type.setBounds(17, 15, 215, 21);
+		panel.add(account_type);
 		
-		JLabel lblNewLabel_4 = new JLabel("1011-15234-07");
-		lblNewLabel_4.setFont(new Font("±¼¸²", Font.PLAIN, 22));
-		lblNewLabel_4.setBounds(210, 15, 143, 21);
-		panel.add(lblNewLabel_4);
+		JLabel account_No = new JLabel("");
+		account_No.setFont(new Font("±¼¸²", Font.PLAIN, 22));
+		account_No.setBounds(210, 15, 143, 21);
+		panel.add(account_No);
 		
-		JLabel lblNewLabel_5 = new JLabel("1,555,569,030");
-		lblNewLabel_5.setFont(new Font("±¼¸²", Font.BOLD, 24));
-		lblNewLabel_5.setBounds(83, 77, 176, 39);
-		panel.add(lblNewLabel_5);
+		JLabel account_balance = new JLabel("");
+		account_balance.setFont(new Font("±¼¸²", Font.BOLD, 24));
+		account_balance.setBounds(83, 77, 176, 39);
+		panel.add(account_balance);
 		
 		JLabel lblNewLabel_6 = new JLabel("\uC6D0");
 		lblNewLabel_6.setBounds(261, 83, 40, 21);
@@ -170,11 +172,16 @@ public class MainView extends JFrame implements Observer{
 	@Override
 	public void update(Observable obs, Object arg) {
 		// TODO Auto-generated method stub
+		/*
 		ManagerModeView mv = new ManagerModeView();
 		String s = mv.getNewAccountName();
 		NewItemPopupView adNewAccount = new NewItemPopupView(s);
 		adNewAccount.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		adNewAccount.setVisible(true);
-
+		*/
+		if(obs instanceof Member) {
+			Member member = (Member)obs;
+			this.username.setText(member.getName());
+		}
 	}
 }

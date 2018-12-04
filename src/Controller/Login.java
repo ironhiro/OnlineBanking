@@ -55,12 +55,13 @@ public class Login implements Controller {
 			
 			if(inputpassword.equals(userpassword))
 			{
-				Member member = new Normal(userid,userpassword,userName,userPhoneNo,userAddr,userGender,userBirth);
-				
-				JOptionPane.showMessageDialog(null, "로그인 성공했습니다.");
+				JOptionPane.showMessageDialog(null, userName + "님 환영합니다.");
 				view.dispose();
-				MainView mainFrame = new MainView();
-				member.addObserver(mainFrame);
+				Member member = new Normal();
+				
+				MainView mainFrame = new MainView(member);
+				member.setValues(userid, userpassword, userName, userPhoneNo, userAddr, userGender, userBirth);
+					
 				mainFrame.setLocationRelativeTo(null);
 				mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				mainFrame.setVisible(true);
