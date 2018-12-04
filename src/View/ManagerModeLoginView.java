@@ -59,19 +59,7 @@ public class ManagerModeLoginView extends JFrame {
 		JButton button = new JButton("\uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				c.execute();
-				if(c.isSuccess())
-				{
-					ManagerModeView managerFrame = new ManagerModeView();
-					managerFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-					managerFrame.setVisible(true);
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호가 맞지 않습니다.");
-				}
-				
-				
+				c.execute();			
 			}
 		});
 		button.setBounds(93, 128, 109, 36);

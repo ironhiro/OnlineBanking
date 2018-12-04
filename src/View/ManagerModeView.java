@@ -22,7 +22,7 @@ public class ManagerModeView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	protected static String newAccountName = "";
+	
 
 	
 
@@ -54,15 +54,7 @@ public class ManagerModeView extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				c.execute();
-				if(c.isSuccess())
-				{
-					newAccountName = textField.getText();
-					JOptionPane.showMessageDialog(null,"새 상품을 성공적으로 등록하였습니다!");
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null,"새 상품이 등록되지 못 하였습니다.");
-				}
+				
 			}
 		});
 		btnNewButton.setBounds(83, 131, 125, 29);
@@ -89,5 +81,5 @@ public class ManagerModeView extends JFrame {
 		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 20));
 	}
 
-	public String getNewAccountName() {return newAccountName;}
+	public String getNewAccountName() {return textField.getText();}
 }

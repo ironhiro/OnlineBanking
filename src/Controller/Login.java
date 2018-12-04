@@ -3,10 +3,13 @@ import View.*;
 import Model.*;
 import java.sql.*;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class Login implements Controller {
 
 	LoginView view;
-	boolean isAuthenticated = false;
+	
 	
 	public Login(LoginView view)
 	{
@@ -52,14 +55,20 @@ public class Login implements Controller {
 			
 			if(inputpassword.equals(userpassword))
 			{
-				
-				isAuthenticated = true;
 				Member member = new Normal(userid,userpassword,userName,userPhoneNo,userAddr,userGender,userBirth);
 				
+				JOptionPane.showMessageDialog(null, "로그인 성공했습니다.");
+				view.dispose();
+				MainView mainFrame = new MainView();
+				member.addObserver(mainFrame);
+				mainFrame.setLocationRelativeTo(null);
+				mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				mainFrame.setVisible(true);
+			
 			}
 			else
 			{
-				isAuthenticated = false;
+				JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호가 맞지 않습니다.");
 			}
 				
 			
@@ -69,12 +78,6 @@ public class Login implements Controller {
 		}
 	}
 	
-	public boolean isSuccess()
-	{
-		if(isAuthenticated)
-			return true;
-		else
-			return false;
-	}
+	
 
 }

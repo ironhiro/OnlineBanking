@@ -59,19 +59,7 @@ public class LoginView extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				c.execute();
-				if(c.isSuccess())
-				{
-					JOptionPane.showMessageDialog(null, "로그인 성공했습니다.");
-					LoginView.this.dispose();
-					MainView mainFrame = new MainView();
-					mainFrame.setLocationRelativeTo(null);
-					mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-					mainFrame.setVisible(true);
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호가 맞지 않습니다.");
-				}
+				
 				
 				
 			}

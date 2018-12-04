@@ -1,6 +1,9 @@
 package Controller;
 import View.*;
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
 import java.sql.*;
 import java.sql.Date;
 import java.text.ParseException;
@@ -8,7 +11,7 @@ import java.text.ParseException;
 public class Register implements Controller {
 
 	RegisterView register;
-	boolean isValid = false;
+	
 		
     public Register(RegisterView register) {
     	this.register = register;
@@ -44,26 +47,21 @@ public class Register implements Controller {
 			ResultSet rs = st.executeQuery(sql);
 			if(rs.next())
 			{
-				isValid = false;
+				JOptionPane.showMessageDialog(null, "중복된 아이디입니다.");
 			}
 			else
 			{
 				sql = "INSERT INTO member VALUES ('" + inputID + "', '" + inputPass+"', '"+inputName+"', '"+inputPhoneNo+"', '" +inputAddress + "', " + inputGender + ", '"+ inputBirthday + "')";
 				st.executeUpdate(sql);
-				isValid = true;
+				JOptionPane.showMessageDialog(null, "회원 등록이 완료 되었습니다!");
+				register.dispose();
+
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
     }
 
-	@Override
-	public boolean isSuccess() {
-		// TODO Auto-generated method stub
-		if(isValid)
-			return true;
-		else
-			return false;
-	}
+	
 
 }
