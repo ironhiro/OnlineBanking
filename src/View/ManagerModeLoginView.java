@@ -1,11 +1,16 @@
 package View;
+import Controller.*;
+import Model.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -24,6 +29,8 @@ public class ManagerModeLoginView extends JFrame {
 	 * Create the frame.
 	 */
 	public ManagerModeLoginView() {
+		Controller c = new AdministerLogin(this);
+		
 		setTitle("\uAD00\uB9AC\uC790\uBAA8\uB4DClogin");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 469, 248);
@@ -52,9 +59,19 @@ public class ManagerModeLoginView extends JFrame {
 		JButton button = new JButton("\uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManagerModeView mainFrame = new ManagerModeView();
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				c.execute();
+				if(c.isSuccess())
+				{
+					ManagerModeView managerFrame = new ManagerModeView();
+					managerFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					managerFrame.setVisible(true);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호가 맞지 않습니다.");
+				}
+				
+				
 			}
 		});
 		button.setBounds(93, 128, 109, 36);
