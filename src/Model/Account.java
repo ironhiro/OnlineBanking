@@ -32,6 +32,14 @@ public abstract class Account extends Observable{
     	setChanged();
     	notifyObservers(null);
     }
+    
+    public void setValues(int balance, int accountType)
+    {
+    	this.balance = balance;
+    	this.accountType = accountType;
+    	measurementChanged();
+    }
+    
     public void setBalance(int amount) {
         // TODO implement here
     	balance = amount;

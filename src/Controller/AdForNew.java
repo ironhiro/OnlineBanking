@@ -46,7 +46,7 @@ public class AdForNew implements Controller {
 			}
 			else
 			{
-				sql = "insert INTO product(account_name, account_date) values ('" + newAccountName + "' ,"+ s + "'";
+				sql = "insert INTO product(account_name, account_date) values ('" + newAccountName + "' ,'"+ s + "')";
 				st.executeUpdate(sql);
 				JOptionPane.showMessageDialog(null, "등록 성공했습니다.");
 			}

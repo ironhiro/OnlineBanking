@@ -29,11 +29,15 @@ public class MainView extends JFrame implements Observer{
 
 	private JPanel contentPane;
 	private Controller c;
+	private JComboBox comboBox;
+	
 	Observable observable;
 	JLabel username;
+	JLabel account_type,account_No,account_balance;
 	String userId;
 	String phoneNo, address, password,userName;
-
+	int accountNo,balance;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -60,7 +64,7 @@ public class MainView extends JFrame implements Observer{
 		btnNewButton.setBounds(288, 15, 123, 27);
 		contentPane.add(btnNewButton);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBounds(59, 168, 312, 27);
 		contentPane.add(comboBox);
 		
@@ -85,18 +89,18 @@ public class MainView extends JFrame implements Observer{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel account_type = new JLabel("");
+		account_type = new JLabel("");
 		account_type.setForeground(Color.RED);
 		account_type.setFont(new Font("±¼¸²", Font.PLAIN, 22));
 		account_type.setBounds(17, 15, 215, 21);
 		panel.add(account_type);
 		
-		JLabel account_No = new JLabel("");
+		account_No = new JLabel("");
 		account_No.setFont(new Font("±¼¸²", Font.PLAIN, 22));
 		account_No.setBounds(210, 15, 143, 21);
 		panel.add(account_No);
 		
-		JLabel account_balance = new JLabel("");
+		account_balance = new JLabel("");
 		account_balance.setFont(new Font("±¼¸²", Font.BOLD, 24));
 		account_balance.setBounds(83, 77, 176, 39);
 		panel.add(account_balance);
@@ -151,9 +155,8 @@ public class MainView extends JFrame implements Observer{
 		JButton btnNewButton_5 = new JButton("\uACC4\uC88C \uB4F1\uB85D");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { //°èÁÂ µî·Ï
-				AccountRegistrationView mainFrame = new AccountRegistrationView(observable);
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+				c = new OpenAccountRegisterationView(userId);
+				c.execute();
 			}
 		});
 		btnNewButton_5.setBounds(17, 363, 360, 55);
@@ -207,6 +210,11 @@ public class MainView extends JFrame implements Observer{
 			address = member.getAddress();
 		}
 		else if(obs instanceof Account) {
+			Account account = (Account)obs;
+			accountNo = account.getAccountNo();
+			account_No.setText(String.valueOf(accountNo));
+			balance = account.getBalance();
+			account_balance.setText(String.valueOf(balance));
 			
 		}
 	}

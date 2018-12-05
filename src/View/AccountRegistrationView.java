@@ -2,7 +2,7 @@ package View;
 import java.awt.BorderLayout;
 import Controller.*;
 import java.awt.EventQueue;
-
+import Model.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -24,8 +24,8 @@ import java.awt.event.ItemEvent;
 
 public class AccountRegistrationView extends JFrame implements Observer{
 
-	private String newAccountNum = "1011";
-	
+
+	private String userId;
 	private JPanel contentPane;
 	private JLabel label;
 	private JPanel panel;
@@ -33,15 +33,16 @@ public class AccountRegistrationView extends JFrame implements Observer{
 	private JComboBox comboBox_1;
 	private JLabel lblNewLabel_3;
 	private JTextField textField;
-
-
+	private JComboBox<String> comboBox;
 	Observable observable;
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public AccountRegistrationView(Observable observable) {
+	public AccountRegistrationView(Observable observable, String userId) {
 		this.observable = observable;
+		this.userId = userId;
 		observable.addObserver(this);
 		setTitle("\uACC4\uC88C \uB4F1\uB85D");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,10 +57,10 @@ public class AccountRegistrationView extends JFrame implements Observer{
 		label.setBounds(56, 42, 78, 30);
 		contentPane.add(label);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				if((String)arg0.getItem() == "마이너스계좌")
+				if("마이너스통장".equals((String)arg0.getItem()))
 					comboBox_1.setEnabled(true);
 			}
 		});
@@ -107,17 +108,51 @@ public class AccountRegistrationView extends JFrame implements Observer{
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("\uCDE8\uC18C");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
 		btnNewButton_1.setBounds(247, 295, 125, 56);
 		contentPane.add(btnNewButton_1);
 	}
 
 
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	public String getSelectedItems()
+	{
+		return (String)comboBox.getSelectedItem();
 	}
+	
+	public String getMinusSelectedItems()
+	{
+		return (String)comboBox_1.getSelectedItem();
+	}
+	
+	public int getLimit()
+	{
+		return Integer.parseInt(textField.getText());
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		if(arg0 instanceof Product)
+		{
+			Product p = (Product)arg0;
+			comboBox.addItem(p.getAccountName());
+			
+		}
+	}
+
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return userId;
+	}
+
+
+	
+	
 
 	
 	
