@@ -1,9 +1,12 @@
 package Controller;
 import java.util.*;
+import View.*;
+import Model.*;
 
 public class ShowTransaction implements Controller {
-
-    public ShowTransaction() {
+	TransactionHistoryView history;
+    public ShowTransaction(TransactionHistoryView history) {
+    	this.history = history;
     }
 
     public void execute() {
@@ -11,10 +14,6 @@ public class ShowTransaction implements Controller {
         
     }
 
-	@Override
-	public boolean isSuccess() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }

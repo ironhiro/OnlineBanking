@@ -52,7 +52,6 @@ public class InitView extends JFrame {
 		JButton btnRegister = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				RegisterView register = new RegisterView();
 				register.setLocationRelativeTo(null);
 				register.setVisible(true);
@@ -95,7 +94,6 @@ public class InitView extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setEnabled(false);
 				ManagerModeLoginView register = new ManagerModeLoginView();
 				register.setLocationRelativeTo(null);
 				register.setVisible(true);

@@ -1,9 +1,12 @@
 package Controller;
 import java.util.*;
+import View.*;
+import Model.*;
 
 public class Deposit implements Controller {
-
-    public Deposit() {
+	DepositView deposit;
+    public Deposit(DepositView deposit) {
+    	this.deposit = deposit;
     }
 
     public void execute() {
@@ -11,10 +14,6 @@ public class Deposit implements Controller {
         
     }
 
-	@Override
-	public boolean isSuccess() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }

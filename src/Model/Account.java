@@ -14,22 +14,23 @@ public abstract class Account {
 
     public int getAccountNo() {
         // TODO implement here
-        return 0;
+        return accountNo;
     }
 
     public int getBalance() {
         // TODO implement here
-        return 0;
+        return balance;
     }
 
     public int getAccountType() {
         // TODO implement here
-        return 0;
+        return accountType;
     }
 
     public void setBalance(int amount) {
         // TODO implement here
-       
+    	balance = amount;
+        
     }
 
 }

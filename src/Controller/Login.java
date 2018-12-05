@@ -1,12 +1,15 @@
 package Controller;
-import View.LoginView;
+import View.*;
 import Model.*;
 import java.sql.*;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Login implements Controller {
 
 	LoginView view;
-	boolean isAuthenticated = false;
+	
 	
 	public Login(LoginView view)
 	{
@@ -35,7 +38,7 @@ public class Login implements Controller {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/bank?serverTimezone=UTC&useSSL=false", "root","");
 			st = conn.createStatement();
 			
-			String sql = "select * FROM member WHERE member_id=" + inputid;
+			String sql = "select * FROM member WHERE member_id='" + inputid + "'";
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next())
 			{
@@ -52,15 +55,21 @@ public class Login implements Controller {
 			
 			if(inputpassword.equals(userpassword))
 			{
+				JOptionPane.showMessageDialog(null, userName + "님 환영합니다.");
+				view.dispose();
+				Member member = new Normal();
 				
-				isAuthenticated = true;
-				
-				Member member = new Normal(userid,userpassword,userName,userPhoneNo,userAddr,userGender,userBirth);
-				
+				MainView mainFrame = new MainView(member);
+				member.setValues(userid, userpassword, userName, userPhoneNo, userAddr, userGender, userBirth);
+					
+				mainFrame.setLocationRelativeTo(null);
+				mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				mainFrame.setVisible(true);
+			
 			}
 			else
 			{
-				isAuthenticated = false;
+				JOptionPane.showMessageDialog(null,"아이디 또는 비밀번호가 맞지 않습니다.");
 			}
 				
 			
@@ -70,12 +79,6 @@ public class Login implements Controller {
 		}
 	}
 	
-	public boolean isSuccess()
-	{
-		if(isAuthenticated)
-			return true;
-		else
-			return false;
-	}
+	
 
 }

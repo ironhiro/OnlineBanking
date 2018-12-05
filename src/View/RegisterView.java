@@ -191,12 +191,7 @@ public class RegisterView extends JFrame {
 				selectedDate = (int) day.getSelectedItem();
 				
 				c.execute();
-				if (c.isSuccess()) {
-					JOptionPane.showMessageDialog(null, "회원 등록이 완료 되었습니다!");
-					RegisterView.this.dispose();
-				} else {
-					JOptionPane.showMessageDialog(null, "회원 등록이 실패하였습니다.");
-				}
+				
 
 			}
 		});

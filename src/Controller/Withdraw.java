@@ -1,9 +1,12 @@
 package Controller;
 import java.util.*;
+import View.*;
+import Model.*;
 
 public class Withdraw implements Controller {
-
-    public Withdraw() {
+	WithdrawView withdraw;
+    public Withdraw(WithdrawView withdraw) {
+    	this.withdraw = withdraw;
     }
 
     public void execute() {
@@ -11,10 +14,6 @@ public class Withdraw implements Controller {
         
     }
 
-	@Override
-	public boolean isSuccess() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }
