@@ -1,7 +1,7 @@
 package Model;
 import java.util.*;
 
-public abstract class Account {
+public abstract class Account extends Observable{
 
     public Account() {
     }
@@ -27,10 +27,15 @@ public abstract class Account {
         return accountType;
     }
 
+    public void	measurementChanged()
+    {
+    	setChanged();
+    	notifyObservers(null);
+    }
     public void setBalance(int amount) {
         // TODO implement here
     	balance = amount;
-        
+        measurementChanged();
     }
 
 }

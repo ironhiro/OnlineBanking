@@ -148,7 +148,7 @@ public class MainView extends JFrame implements Observer{
 		JButton btnNewButton_5 = new JButton("\uACC4\uC88C \uB4F1\uB85D");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { //°èÁÂ µî·Ï
-				AccountRegistrationView mainFrame = new AccountRegistrationView();
+				AccountRegistrationView mainFrame = new AccountRegistrationView(observable);
 				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				mainFrame.setVisible(true);
 			}
@@ -178,9 +178,9 @@ public class MainView extends JFrame implements Observer{
 		});
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DepositView depoistView = new DepositView();
-				depoistView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				depoistView.setVisible(true);
+				DepositView depositView = new DepositView();
+				depositView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				depositView.setVisible(true);
 				
 			}
 		});
@@ -205,6 +205,9 @@ public class MainView extends JFrame implements Observer{
 			userId = member.getID();
 			password = member.getPassword();
 			address = member.getAddress();
+		}
+		else if(obs instanceof Account) {
+			
 		}
 	}
 }

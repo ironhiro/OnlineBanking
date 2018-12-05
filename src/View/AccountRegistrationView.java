@@ -35,12 +35,14 @@ public class AccountRegistrationView extends JFrame implements Observer{
 	private JTextField textField;
 
 
-	
+	Observable observable;
 
 	/**
 	 * Create the frame.
 	 */
-	public AccountRegistrationView() {
+	public AccountRegistrationView(Observable observable) {
+		this.observable = observable;
+		observable.addObserver(this);
 		setTitle("\uACC4\uC88C \uB4F1\uB85D");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 467, 422);
@@ -57,10 +59,10 @@ public class AccountRegistrationView extends JFrame implements Observer{
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				
+				if((String)arg0.getItem() == "마이너스계좌")
+					comboBox_1.setEnabled(true);
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uC790\uC720\uC785\uCD9C\uAE08\uACC4\uC88C", "\uB9C8\uC774\uB108\uC2A4\uACC4\uC88C"}));
 		comboBox.setBounds(158, 44, 244, 27);
 		contentPane.add(comboBox);
 		
@@ -78,10 +80,7 @@ public class AccountRegistrationView extends JFrame implements Observer{
 		comboBox_1.setEnabled(false);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1\uB4F1\uAE09", "2\uB4F1\uAE09", "3\uB4F1\uAE09", "4\uB4F1\uAE09", "5\uB4F1\uAE09", "6\uB4F1\uAE09", "7\uB4F1\uAE09", "8\uB4F1\uAE09"}));
 		comboBox_1.setBounds(124, 41, 210, 27);
-		if((String)comboBox.getSelectedItem() == "마이너스통장")
-		{
-			comboBox_1.setEnabled(true);
-		}
+		
 		panel.add(comboBox_1);
 		
 		lblNewLabel_3 = new JLabel("\uAC70\uB798\uD55C\uB3C4");

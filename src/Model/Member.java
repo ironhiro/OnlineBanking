@@ -76,6 +76,13 @@ public abstract class Member extends Observable{
     	return accountList;
     }
     
+    public void addAccountList(Account a)
+    {
+    	accountList.add(a);
+    	measurementsChanged();
+    }
+    
+    
     public void measurementsChanged()
     {
     	setChanged();
