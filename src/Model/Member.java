@@ -88,6 +88,10 @@ public abstract class Member extends Observable{
     	measurementsChanged();
     }
     
+    public ArrayList<Account> getAccountList(){
+    	return accountList;
+    }
+    
     public void measurementsChanged()
     {
     	setChanged();

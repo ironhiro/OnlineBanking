@@ -1,6 +1,7 @@
 package View;
 
 import Model.*;
+import Controller.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -30,13 +31,19 @@ public class MainView extends JFrame implements Observer{
 	private Controller c;
 	Observable observable;
 	JLabel username;
-	
+	String userId;
+	String phoneNo, address, password,userName;
 
 	/**
 	 * Create the frame.
 	 */
 	public MainView(Observable observable) {
+<<<<<<< HEAD
 
+=======
+		
+		
+>>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 		this.observable = observable;
 		observable.addObserver(this);
 		setTitle("WH Bank");
@@ -50,8 +57,13 @@ public class MainView extends JFrame implements Observer{
 		
 		JButton btnNewButton = new JButton("\uB9C8\uC774\uD398\uC774\uC9C0");
 		btnNewButton.addActionListener(new ActionListener() {
+<<<<<<< HEAD
 			public void actionPerformed(ActionEvent arg0) { //마이페이지 버튼
 				c = new OpenMyPage(observable);
+=======
+			public void actionPerformed(ActionEvent arg0) {
+				Controller c = new OpenMyPage(MainView.this);
+>>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 				c.execute();
 			}
 		});
@@ -99,14 +111,30 @@ public class MainView extends JFrame implements Observer{
 		account_balance.setBounds(83, 77, 176, 39);
 		panel.add(account_balance);
 		
-		JLabel lblNewLabel_6 = new JLabel("\uC6D0");
-		lblNewLabel_6.setBounds(261, 83, 40, 21);
-		panel.add(lblNewLabel_6);
+		JLabel label_won = new JLabel("\uC6D0");
+		label_won.setBounds(261, 83, 40, 21);
+		if(comboBox.getItemCount()==0)
+		{
+			label_won.setText("");
+		}
+		else
+		{
+			label_won.setText("원");
+		}
+		panel.add(label_won);
 		
-		JLabel lblNewLabel_7 = new JLabel("\uC794\uC561");
-		lblNewLabel_7.setFont(new Font("굴림", Font.PLAIN, 16));
-		lblNewLabel_7.setBounds(47, 59, 47, 21);
-		panel.add(lblNewLabel_7);
+		JLabel label_balance = new JLabel("\uC794\uC561");
+		label_balance.setFont(new Font("굴림", Font.PLAIN, 15));
+		label_balance.setBounds(12, 59, 341, 21);
+		if(comboBox.getItemCount()==0)
+		{
+			label_balance.setText("개설된 계좌가 없습니다. 계좌를 추가해주세요.");
+		}
+		else
+		{
+			label_balance.setText("잔액");
+		}
+		panel.add(label_balance);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -181,7 +209,11 @@ public class MainView extends JFrame implements Observer{
 		*/
 		if(obs instanceof Member) {
 			Member member = (Member)obs;
-			this.username.setText(member.getName());
+			userName = member.getName();
+			username.setText(userName);
+			userId = member.getID();
+			password = member.getPassword();
+			address = member.getAddress();
 		}
 	}
 }

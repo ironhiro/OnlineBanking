@@ -51,7 +51,7 @@ public class Register implements Controller {
 			}
 			else
 			{
-				sql = "INSERT INTO member VALUES ('" + inputID + "', '" + inputPass+"', '"+inputName+"', '"+inputPhoneNo+"', '" +inputAddress + "', " + inputGender + ", '"+ inputBirthday + "')";
+				sql = "INSERT INTO member VALUES ('" + inputID + "', '" + inputPass+"', '"+inputName+"', '"+inputPhoneNo+"', '" +inputAddress + "', " + inputGender + ", '"+ inputBirthday + "', " + 1+")";
 				st.executeUpdate(sql);
 				JOptionPane.showMessageDialog(null, "회원 등록이 완료 되었습니다!");
 				register.dispose();
