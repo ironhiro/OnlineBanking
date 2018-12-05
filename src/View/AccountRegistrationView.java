@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 public class AccountRegistrationView extends JFrame {
 
-	private String newAccountNum; //자동으로 생성되는 계좌 번호
+	private String newAccountNum = "1011";
 	
 	private JPanel contentPane;
 	private JLabel label;
@@ -62,9 +62,19 @@ public class AccountRegistrationView extends JFrame {
 		
 		newAccountNum = makeAccountNum();
 		
-		lblNewLabel_1 = new JLabel(newAccountNum);
+		lblNewLabel_1 = new JLabel();
 		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(158, 31, 244, 25);
+		
+		//String newAccountNum = "1011";
+		int value;
+		Random r = new Random();
+		for(int i = 0; i < 7; i++)
+		{
+			value = r.nextInt(10);
+			newAccountNum += Integer.toString(value);
+		}
+
 		lblNewLabel_1.setText(newAccountNum);
 		contentPane.add(lblNewLabel_1);
 		
@@ -105,7 +115,7 @@ public class AccountRegistrationView extends JFrame {
 		contentPane.add(btnNewButton_1);
 	}
 
-	String makeAccountNum() {
+	public String makeAccountNum() {  //계좌 번호 자동 생성
 		String newAccountNum = "1011";
 		int value;
 		Random r = new Random();
@@ -114,9 +124,10 @@ public class AccountRegistrationView extends JFrame {
 			value = r.nextInt(10);
 			newAccountNum += Integer.toString(value);
 		}
+
 		return newAccountNum;
 	}
 	
-	String getNewAccountNum() {return newAccountNum;}
+	public String getNewAccountNum() {return newAccountNum;}
 	
 }

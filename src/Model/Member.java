@@ -14,7 +14,7 @@ public abstract class Member extends Observable{
     private String name;
 
     private String phoneNo;
-
+ 
     private String address;
 
     private Boolean gender;
