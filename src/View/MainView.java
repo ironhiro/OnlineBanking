@@ -38,12 +38,6 @@ public class MainView extends JFrame implements Observer{
 	 * Create the frame.
 	 */
 	public MainView(Observable observable) {
-<<<<<<< HEAD
-
-=======
-		
-		
->>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 		this.observable = observable;
 		observable.addObserver(this);
 		setTitle("WH Bank");
@@ -57,13 +51,9 @@ public class MainView extends JFrame implements Observer{
 		
 		JButton btnNewButton = new JButton("\uB9C8\uC774\uD398\uC774\uC9C0");
 		btnNewButton.addActionListener(new ActionListener() {
-<<<<<<< HEAD
-			public void actionPerformed(ActionEvent arg0) { //마이페이지 버튼
-				c = new OpenMyPage(observable);
-=======
 			public void actionPerformed(ActionEvent arg0) {
 				Controller c = new OpenMyPage(MainView.this);
->>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
+
 				c.execute();
 			}
 		});
@@ -182,27 +172,15 @@ public class MainView extends JFrame implements Observer{
 		});
 		btnNewButton_2.addActionListener(new ActionListener() { //출금 버튼
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				WithdrawView withdrawView = new WithdrawView();
-				withdrawView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				withdrawView.setVisible(true);
-			}
-		});
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DepositView depositView = new DepositView();
-				depositView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				depositView.setVisible(true);
-=======
+
 				c = new OpenWithdrawView();
 				c.execute();
->>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking
-				
 			}
 		});
+		
 		btnNewButton_1.addActionListener(new ActionListener() { //입금 버튼
 			public void actionPerformed(ActionEvent e) {				
-				c = new OpenDepoistView();
+				c = new OpenDepositView();
 				c.execute();
 			}
 		});

@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import View.DepositView;
 
-public class OpenDepoistView implements Controller{
+public class OpenDepositView implements Controller{
 
 	@Override
 	public void execute() {
