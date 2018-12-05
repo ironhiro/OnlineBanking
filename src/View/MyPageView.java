@@ -1,5 +1,7 @@
 package View;
 import java.awt.BorderLayout;
+import Model.*;
+import Controller.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,7 +17,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.awt.event.ActionEvent;
 
-public class MyPageView extends JFrame implements Observer{
+public class MyPageView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField nameInfo;
@@ -23,15 +25,15 @@ public class MyPageView extends JFrame implements Observer{
 	private JPasswordField passInfo;
 	private JPasswordField phoneInfo;
 	private JButton changePassButton;
-	private Observable observable;
 	
+	String id ="", phoneNo="",password="", name="";
 
 	/**
 	 * Create the frame.
 	 */
-	public MyPageView(Observable observable) {
-		this.observable = observable;
-		observable.addObserver(this);
+	public MyPageView() {
+		
+		Controller c = new ProfileUpdate(this);
 		setTitle("\uB9C8\uC774\uD398\uC774\uC9C0");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 497, 340);
@@ -82,6 +84,11 @@ public class MyPageView extends JFrame implements Observer{
 		contentPane.add(phoneInfo);
 		
 		JButton updateButton = new JButton("\uD68C\uC6D0 \uC815\uBCF4 \uC218\uC815");
+		updateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				c.execute();
+			}
+		});
 		updateButton.setBounds(95, 225, 164, 44);
 		contentPane.add(updateButton);
 		
@@ -96,9 +103,5 @@ public class MyPageView extends JFrame implements Observer{
 	}
 
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
