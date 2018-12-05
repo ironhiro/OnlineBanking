@@ -19,11 +19,15 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.LineBorder;
+
+import Controller.*;
+import View.MyPageView;
 import java.awt.Color;
 
 public class MainView extends JFrame implements Observer{
 
 	private JPanel contentPane;
+	private Controller c;
 	Observable observable;
 	JLabel username;
 	
@@ -32,6 +36,7 @@ public class MainView extends JFrame implements Observer{
 	 * Create the frame.
 	 */
 	public MainView(Observable observable) {
+
 		this.observable = observable;
 		observable.addObserver(this);
 		setTitle("WH Bank");
@@ -45,10 +50,9 @@ public class MainView extends JFrame implements Observer{
 		
 		JButton btnNewButton = new JButton("\uB9C8\uC774\uD398\uC774\uC9C0");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				MyPageView mainFrame = new MyPageView(observable);
-				mainFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				mainFrame.setVisible(true);
+			public void actionPerformed(ActionEvent arg0) { //마이페이지 버튼
+				c = new OpenMyPage(observable);
+				c.execute();
 			}
 		});
 		btnNewButton.setBounds(288, 15, 123, 27);
@@ -136,33 +140,29 @@ public class MainView extends JFrame implements Observer{
 		});
 		btnNewButton_5.setBounds(17, 363, 360, 55);
 		panel_1.add(btnNewButton_5);
-		btnNewButton_4.addActionListener(new ActionListener() {
+		btnNewButton_4.addActionListener(new ActionListener() { //거래내역 버튼
 			public void actionPerformed(ActionEvent e) {
-				TransactionHistoryView transactionHistoryView = new TransactionHistoryView();
-				transactionHistoryView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				transactionHistoryView.setVisible(true);
+				c = new OpenTransactionHistoryView();
+				c.execute();
 			}
 		});
-		btnNewButton_3.addActionListener(new ActionListener() {
+		btnNewButton_3.addActionListener(new ActionListener() {//계좌이체 버튼
 			public void actionPerformed(ActionEvent e) {
-				AccountTransferView accountTransferView = new AccountTransferView();
-				accountTransferView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				accountTransferView.setVisible(true);
+				c = new OpenAccountTransferView();
+				c.execute();
 			}
 		});
-		btnNewButton_2.addActionListener(new ActionListener() {
+		btnNewButton_2.addActionListener(new ActionListener() { //출금 버튼
 			public void actionPerformed(ActionEvent e) {
-				WithdrawView withdrawView = new WithdrawView();
-				withdrawView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				withdrawView.setVisible(true);
-			}
-		});
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DepositView depoistView = new DepositView();
-				depoistView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				depoistView.setVisible(true);
+				c = new OpenWithdrawView();
+				c.execute();
 				
+			}
+		});
+		btnNewButton_1.addActionListener(new ActionListener() { //입금 버튼
+			public void actionPerformed(ActionEvent e) {				
+				c = new OpenDepoistView();
+				c.execute();
 			}
 		});
 	}

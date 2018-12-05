@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.*;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,6 +22,7 @@ import java.awt.event.MouseEvent;
 public class InitView extends JFrame {
 
 	private JPanel contentPane;
+	private Controller c;
 	Object currentWindow = this;
 	/**
 	 * Launch the application.
@@ -50,11 +54,10 @@ public class InitView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnRegister = new JButton("\uD68C\uC6D0\uAC00\uC785");
-		btnRegister.addActionListener(new ActionListener() {
+		btnRegister.addActionListener(new ActionListener() {//회원가입
 			public void actionPerformed(ActionEvent arg0) {
-				RegisterView register = new RegisterView();
-				register.setLocationRelativeTo(null);
-				register.setVisible(true);
+				c = new OpenRegisterView();
+				c.execute();	
 			}
 		});
 		btnRegister.setToolTipText("");
@@ -63,13 +66,9 @@ public class InitView extends JFrame {
 		
 		JButton btnLogin = new JButton("\uB85C\uADF8\uC778");
 		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				LoginView login = new LoginView();
-				login.setLocationRelativeTo(null);
-				login.setVisible(true);
-				
-				
+			public void actionPerformed(ActionEvent e) {//로그인
+				c = new OpenLoginView();
+				c.execute();
 			}
 		});
 		btnLogin.setBounds(147, 107, 140, 23);
@@ -92,11 +91,9 @@ public class InitView extends JFrame {
 		
 		JButton button = new JButton("\uAD00\uB9AC\uC790 \uBAA8\uB4DC \uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ManagerModeLoginView register = new ManagerModeLoginView();
-				register.setLocationRelativeTo(null);
-				register.setVisible(true);
+			public void actionPerformed(ActionEvent e) { //관리자 모드 로그인
+				c = new OpenManagerModeLoginView();
+				c.execute();
 			}
 		});
 		button.setBounds(229, 225, 199, 29);
