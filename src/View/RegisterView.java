@@ -117,9 +117,11 @@ public class RegisterView extends JFrame {
 
 		JComboBox day = new JComboBox();
 		day.setBounds(278, 216, 44, 21);
+	
 		for (int i = 1; i <= 31; i++) {
 			day.addItem(i);
 		}
+
 		contentPane.add(day);
 
 		month.addItemListener(new ItemListener() {

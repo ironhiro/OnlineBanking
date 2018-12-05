@@ -24,7 +24,7 @@ import java.awt.event.ItemEvent;
 
 public class AccountRegistrationView extends JFrame implements Observer{
 
-	private String newAccountNum; //자동으로 생성되는 계좌 번호
+	private String newAccountNum = "1011";
 	
 	private JPanel contentPane;
 	private JLabel label;
@@ -66,6 +66,27 @@ public class AccountRegistrationView extends JFrame implements Observer{
 		comboBox.setBounds(158, 44, 244, 27);
 		contentPane.add(comboBox);
 		
+<<<<<<< HEAD
+		newAccountNum = makeAccountNum();
+		
+		lblNewLabel_1 = new JLabel();
+		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(158, 31, 244, 25);
+		
+		//String newAccountNum = "1011";
+		int value;
+		Random r = new Random();
+		for(int i = 0; i < 7; i++)
+		{
+			value = r.nextInt(10);
+			newAccountNum += Integer.toString(value);
+		}
+
+		lblNewLabel_1.setText(newAccountNum);
+		contentPane.add(lblNewLabel_1);
+		
+=======
+>>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 		panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "\uB9C8\uC774\uB108\uC2A4 \uACC4\uC88C\uC77C \uACBD\uC6B0", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(56, 99, 362, 96);
@@ -106,6 +127,9 @@ public class AccountRegistrationView extends JFrame implements Observer{
 		contentPane.add(btnNewButton_1);
 	}
 
+<<<<<<< HEAD
+	public String makeAccountNum() {  //계좌 번호 자동 생성
+=======
 
 
 
@@ -117,6 +141,7 @@ public class AccountRegistrationView extends JFrame implements Observer{
 
 	/*
 	String makeAccountNum() {
+>>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 		String newAccountNum = "1011";
 		int value;
 		Random r = new Random();
@@ -125,9 +150,15 @@ public class AccountRegistrationView extends JFrame implements Observer{
 			value = r.nextInt(10);
 			newAccountNum += Integer.toString(value);
 		}
+
 		return newAccountNum;
 	}
 	
+<<<<<<< HEAD
+	public String getNewAccountNum() {return newAccountNum;}
+	
+=======
 	String getNewAccountNum() {return newAccountNum;}
 	*/
+>>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 }

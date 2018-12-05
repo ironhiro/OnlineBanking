@@ -57,11 +57,8 @@ public class LoginView extends JFrame {
 		
 		JButton button = new JButton("\uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) { 
 				c.execute();
-				
-				
-				
 			}
 		});
 		button.setBounds(75, 158, 109, 36);

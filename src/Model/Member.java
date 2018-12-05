@@ -20,8 +20,24 @@ public abstract class Member extends Observable{
     	
     	
     }
+//
+//<<<<<<< HEAD
+    private String id;
 
-    
+    private String password;
+
+    private String name;
+
+    private String phoneNo;
+ 
+    private String address;
+
+    private Boolean gender;
+
+    private Date birth;
+//=======
+//    
+//>>>>>>> branch 'master' of https://github.com/ironhiro/OnlineBanking.git
 
     private ArrayList<Account> accountList;
 
